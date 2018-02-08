@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+{% block title %}Test DB{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-3 label label-primary" style="padding-top:15px; margin-bottom:15px">
+                <p>常用脚本执行</p>
+            </div>
+        </div>
+        <div>
+            <form class="form-inline" method="get", action="{% url 'run_script_haha' %}">
+                <div class="form-group">
+                    <button type="submit" name='script_name' value="auto_payment" class="btn btn-success">连连自动打款</button>
+                </div>
+								<div class="form-group">
+                    <button type="submit" name='script_name' value="delay_back_loan" class="btn btn-success">逾期催回报表数据刷新</button>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name='script_name' value="sys_push" class="btn btn-success">打工圈系统推送</button>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name='script_name' value="other" class="btn btn-success" disabled="disabled">other</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+

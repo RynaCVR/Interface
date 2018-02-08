@@ -1,0 +1,57 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Test DB{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-3 label label-primary" style="padding-top:15px; margin-bottom:15px">
+                <p>打工贷订单数据修改</p>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom:10px">
+            <table class="table">
+                <tr>
+                    <td><form class="form-inline", method="get", action="{% url 'modify_order_status' %}">
+                        <div class="form-group">
+                            <label>订单号：</label>
+                            <input class="form-control" name="order_num" type="text" placeholder="订单号" >
+                            <label>状态码：</label>
+                            <input class="form-control" name="status" type="text" placeholder="状态码" >
+                        </div>
+                        <button class="btn btn-success" type="submit">修改</button>
+                        <label>（修改某一订单的状态码）</label>
+                    </form></td>
+                </tr>
+                <tr>
+                    <td><form class="form-inline", method="get", action="{% url 'modify_order_due_day' %}">
+                        <div class="form-group">
+                            <label>订单号：</label>
+                            <input class="form-control" name="order_num" type="text" placeholder="订单号" >
+                            <label>逾期天数：</label>
+                            <input class="form-control" name="due_day" type="text" placeholder="逾期天数" >
+                        </div>
+                        <button class="btn btn-success" type="submit">修改</button>
+                        <label>（将某一订单修改成逾期订单）</label>
+                    </form></td>
+                </tr>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-3 label label-primary" style="padding-top:15px; margin-bottom:15px">
+                <p>身份证样证</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {% load static %}
+                <img src="{% static 'images/card_1.png' %}" class="img-responsive" alt="Responsive image">
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'images/card_2.png' %}" class="img-responsive" alt="Responsive image">
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}

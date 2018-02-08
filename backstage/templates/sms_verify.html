@@ -1,0 +1,66 @@
+
+{% extends "base.html" %}
+{% block title %}Test DB{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-3 label label-primary" style="padding-top:15px; margin-bottom:15px">
+                <p>短信验证码查询</p>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom:10px">
+            <div class="col-md-11">
+                <form class="form-inline", method="get", action="{% url 'select_sms' %}">
+                    <div class="form-group">
+                        <div class="radio">
+                            <label>
+                                {% if sms_db_name == 'jjb' %}
+                                    <input type="radio" name="db_name" id="optionsRadios1" value="jjb" checked>
+                                {% else %}
+                                    <input type="radio" name="db_name" id="optionsRadios2" value="jjb">
+                                {% endif %}
+                                记加班
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                {% if sms_db_name == 'dgd' %}
+                                    <input type="radio" name="db_name" id="optionsRadios3" value="dgd" checked>
+                                {% else %}
+                                    <input type="radio" name="db_name" id="optionsRadios4" value="dgd">
+                                {% endif %}
+                                打工贷
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn btn-success" type="submit">确定</button>
+                </form>
+            </div>
+            <div class="col-md-1" style="padding-top:10px">
+                <span class="label label-default">{{ sms_db_name }}</span>
+            </div>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
+            <tr class="info">
+                <th>手机号</th>
+                <th>验证码</th>
+                <th>创建时间</th>
+                <th>order_id</th>
+            </tr>
+            {% for item1 in sms_data %}
+                <tr>
+                    {% for item2 in item1 %}
+                        <td>{{item2}}</td>
+
+                        {% if forloop.last %}
+                            {% if sms_db_name == 'jjb' %}
+                                <td>记加班无记录</td>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+

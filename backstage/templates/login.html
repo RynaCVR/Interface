@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        {% load bootstrap3 %}
+        {% bootstrap_javascript %}
+        {% bootstrap_css %}
+        <meta charset="utf-8">
+        <title>慧贤测试</title>
+    </head>
+
+    <body role="document" style="background-color:#3D3D3D">
+        <!--登录表单-->
+        <div class="container-fluid" style="margin-top:200px"></div>
+        <div class="container-fluid" style="width:300px">
+            <div>
+                <h1 class="text-center" style="color:#AAAAAA">慧贤测试</h1>
+            </div>
+            <div>
+                <form class="form-horizontal" method="post" action="{% url 'login_action' %}">
+                    <div class="form-group">
+                        <input class="form-control" name="username" type="text" placeholder="username">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" name="password" type="password" placeholder="password">
+                    </div>
+                    <div>
+                        <p style="color:#ff0000">{{ error }}</p>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <button class="btn btn-primary form-control" type="submit">登录</button>
+                        </div>
+                    </div>
+                    <div>
+                        {% csrf_token %}
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </body>
+
+</html>

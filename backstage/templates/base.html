@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+        {% load bootstrap3 %}
+        {% load static %}
+        <!--{% bootstrap_javascript %}-->
+        <!--{% bootstrap_css %}-->
+        <link rel="shortcut icon" href="{% static 'images/icon.ico' %}" alt="logo" />
+        <title>{% block title %}{% endblock %}</title>
+
+        <!-- Custom styles for this template -->
+        <!--<link href="../templates/css/navbar.css" rel="stylesheet">-->
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]
+            <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        [endif]-->
+    </head>
+    <body style="padding-top: 20px; padding-bottom: 20px">
+        <div class="container">
+
+            <!-- Static navbar navbar-fixed-top navbar-default-->
+            <nav class="navbar navbar-inverse navbar-default" style="margin-bottom: 20px;">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">HX Test</a>
+                    </div>
+
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            {% if request.path == '/backstage/test_home/' %}
+                                <li class="active"><a href="{% url 'test_home' %}">Home</a></li>
+                            {% else %}
+                                <li><a href="{% url 'test_home' %}">Home</a></li>
+                            {% endif %}
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    DB
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'run_script' %}">常用脚本执行</a></li>
+                                    <li><a href="{% url 'modify_order' %}">订单修改</a></li>
+                                    <li><a href="{% url 'sms_verify' %}">短信验证码</a></li>
+                                    <li><a href="#">other</a></li>
+                                    <!--<li role="separator" class="divider"></li>-->
+                                    <!--<li class="dropdown-header">Nav header</li>-->
+                                    <!--<li><a href="#">Separated link</a></li>-->
+                                    <!--<li><a href="#">One more separated link</a></li>-->
+                                </ul>
+                            </li>
+
+                            {% if request.path == '/backstage/auto_test/' %}
+                                <li class="active"><a href="{% url 'ifautotest' %}">AutoTest</a></li>
+                            {% else %}
+                                <li><a href="{% url 'ifautotest_index' %}">AutoTest</a></li>
+                            {% endif %}
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="#">{{ request.user.username }}<span class="sr-only">(current)</span></a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div><!--/.container-fluid -->
+            </nav>
+            {% block content %}{% endblock %}
+        </div> <!-- /container -->
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
+

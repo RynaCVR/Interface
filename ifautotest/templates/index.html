@@ -1,0 +1,36 @@
+
+
+{% extends "base.html" %}
+{% block title %}AutoTest{% endblock %}
+
+
+{% block content %}
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-3 label label-primary" style="padding-top:15px; margin-bottom:15px">
+                <p>接口自动化</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <form class="form-inline" method="get", action="{% url 'run_ifautotest' %}">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email:</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="user_email" placeholder="Email">
+                    </div>
+                    <button type="submit" class="btn btn-success" style="width:70px">确定</button>
+                </form>
+            </div>
+            <div class="col-md-5 text-left">
+                <h5>(输入邮箱，点确定执行接口自动化脚本，报告将发送至您的邮箱)</h5>
+            </div>
+        </div>
+        <div class="row" style="margin-top:15px">
+            <div class="col-md-4">
+                <form class="form-inline" method="get", action="">
+                    <button type="submit" class="btn btn-success" disabled>重启接口自动化定时脚本</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
